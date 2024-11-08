@@ -13,3 +13,22 @@ input {
 #new-book {
   margin-bottom: 8px;
 }
+
+.error {
+  display: none;
+  background-color: indianred;
+}
+
+.visible {
+  display: block;
+}
+
+.valid {
+  border-color: green;
+  background-color: aquamarine;
+}
+
+.invalid {
+  border-color: #900;
+  background-color: #fdd;
+}

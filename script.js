@@ -95,13 +95,33 @@ class Library {
     document.getElementById("new-book").addEventListener("click", () => {
       document.querySelector("dialog").showModal();
     });
-    document.getElementById("add-book").addEventListener("click", () => {
+    document.getElementById("add-book").addEventListener("click", (e) => {
+      if (formValidation(e)) {
+        return;
+      }
       const book = this.createBook();
       if (!!book) {
         this.addBookToLibrary(book);
       }
     }, false);
     this.showBooks();
+  }
+}
+
+function formValidation(event) {
+  const titleInput = document.getElementById("title");
+  const authorInput = document.getElementById("author");
+  const pagesInput = document.getElementById("pages");
+  const spanError = document.querySelector("span");
+
+  if (titleInput.validity.valueMissing || authorInput.validity.valueMissing || pagesInput.validity.valueMissing) {
+    spanError.classList = "error visible";
+    event.preventDefault();
+    return true;
+  }
+  else {
+    spanError.classList = "error";
+    return false;
   }
 }
 
